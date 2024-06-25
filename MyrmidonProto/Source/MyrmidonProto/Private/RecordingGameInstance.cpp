@@ -2,12 +2,13 @@
 
 
 #include "RecordingGameInstance.h"
+#include "Engine/DemoNetDriver.h"
 
-void URecordingGameInstance::StartRecording()
+void URecordingGameInstance::StartRecording(FString sequenceName)
 {
 	if (isRecording) return;
 	isRecording = true;
-	StartRecordingReplay("Test","TestFriendly");
+	StartRecordingReplay(sequenceName,"Friendly");
 }
 
 void URecordingGameInstance::StopRecording()
@@ -17,7 +18,12 @@ void URecordingGameInstance::StopRecording()
 	StopRecordingReplay();
 }
 
-void URecordingGameInstance::StartReplay()
+void URecordingGameInstance::StartReplay(FString sequenceName)
 {
-	PlayReplay("Test");
+	PlayReplay(sequenceName);
+}
+
+void URecordingGameInstance::JumpToPoint(float time)
+{
+	GetWorld()->GetDemoNetDriver()->GotoTimeInSeconds(time);
 }

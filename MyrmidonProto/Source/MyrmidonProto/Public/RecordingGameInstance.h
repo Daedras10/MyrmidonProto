@@ -18,12 +18,15 @@ public:
 	bool isRecording = false;
 
 	UFUNCTION(BlueprintCallable)
-	void StartRecording();
+	void StartRecording(FString sequenceName);
 
 	UFUNCTION(BlueprintCallable)
 	void StopRecording();
 
 	UFUNCTION(BlueprintCallable)
-	void StartReplay();
+	void StartReplay(FString sequenceName);
+
+	UFUNCTION(BlueprintCallable)
+	void JumpToPoint(float time);
 	
 };
