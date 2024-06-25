@@ -21,7 +21,6 @@ void URecordingGameInstance::StopRecording()
 void URecordingGameInstance::StartReplay(FString sequenceName)
 {
 	PlayReplay(sequenceName);
-	inReplay = true;
 }
 
 void URecordingGameInstance::JumpToPoint(float time)

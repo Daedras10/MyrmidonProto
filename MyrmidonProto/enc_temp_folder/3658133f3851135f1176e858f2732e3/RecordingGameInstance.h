@@ -3,9 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AdvancedCopyCustomization.h"
-#include "AdvancedFriendsGameInstance.h"
-#include "AdvancedFriendsGameInstance.h"
 #include "Engine/GameInstance.h"
 #include "RecordingGameInstance.generated.h"
 
@@ -13,15 +10,12 @@
  * 
  */
 UCLASS()
-class MYRMIDONPROTO_API URecordingGameInstance : public UAdvancedFriendsGameInstance
+class MYRMIDONPROTO_API URecordingGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 public:
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	bool isRecording = false;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	bool inReplay = false;
 
 	UFUNCTION(BlueprintCallable)
 	void StartRecording(FString sequenceName);
