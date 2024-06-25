@@ -17,9 +17,6 @@ public:
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	bool isRecording = false;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	bool inReplay = false;
-
 	UFUNCTION(BlueprintCallable)
 	void StartRecording(FString sequenceName);
 
