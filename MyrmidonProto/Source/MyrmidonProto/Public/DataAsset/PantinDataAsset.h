@@ -68,6 +68,12 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Default")
 	float MinGravity = 1.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Default")
+	float FunkyGravityDuration = 1.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Default")
+	float CoyoteTime = 0.1f;
 
 
 	
