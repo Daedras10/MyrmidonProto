@@ -40,6 +40,7 @@ void APantinCharacter::BeginPlay()
 
 	MaxGravity = PantinDataAsset->MaxGravity;
 	MinGravity = PantinDataAsset->MinGravity;
+	FunkyGravityDuration = PantinDataAsset->FunkyGravityDuration;
 
 	WindPower = PantinDataAsset->WindPower;
 	WindMaxHit = PantinDataAsset->WindMaxHit;
@@ -49,8 +50,6 @@ void APantinCharacter::BeginPlay()
 	ClimbSpeed = PantinDataAsset->ClimbSpeed;
 	ClimbMinArea = PantinDataAsset->ClimbMinArea;
 	ClimbPantinHeight = PantinDataAsset->ClimbPantinHeight;
-	
-	
 }
 
 // Called every frame
