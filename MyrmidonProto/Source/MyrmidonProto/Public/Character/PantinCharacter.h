@@ -41,6 +41,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float FunkyGravityDuration = 1.0f;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CoyoteTime = 0.1f;
+
 
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
