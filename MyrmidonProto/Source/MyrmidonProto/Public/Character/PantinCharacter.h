@@ -28,6 +28,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable)
+	void ActivateSprint(const bool bActivate);
+
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UPantinDataAsset* PantinDataAsset;
@@ -46,6 +49,15 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float CoyoteTime = 0.1f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxWalkSpeed = 500.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxSprintSpeed = 900.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool IsSprinting = false;
 
 
 	

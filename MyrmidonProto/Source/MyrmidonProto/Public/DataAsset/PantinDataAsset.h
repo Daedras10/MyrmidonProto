@@ -40,6 +40,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Walking")
 	float MaxWalkSpeed = 500.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Walking")
+	float MaxSprintSpeed = 900.0f;
 
 
 	
