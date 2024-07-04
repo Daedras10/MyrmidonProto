@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "RecordingGameInstance.h"
+#include "GameMode/RecordingGameInstance.h"
 #include "Engine/DemoNetDriver.h"
 
 void URecordingGameInstance::StartRecording(FString sequenceName)
