@@ -19,7 +19,11 @@ void APantinCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (PantinDataAsset == nullptr || !UseDataAsset) return;
+	if (PantinDataAsset == nullptr || !UseDataAsset)
+	{
+		MaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
+		return;
+	}
 	
 	GetCharacterMovement()->GravityScale = PantinDataAsset->GravityScale;
 	GetCharacterMovement()->MaxAcceleration = PantinDataAsset->MaxAcceleration;
@@ -42,6 +46,7 @@ void APantinCharacter::BeginPlay()
 	MinGravity = PantinDataAsset->MinGravity;
 	FunkyGravityDuration = PantinDataAsset->FunkyGravityDuration;
 	CoyoteTime = PantinDataAsset->CoyoteTime;
+	MaxSprintSpeed = PantinDataAsset->MaxSprintSpeed;
 
 	WindPower = PantinDataAsset->WindPower;
 	WindMaxHit = PantinDataAsset->WindMaxHit;
@@ -51,6 +56,9 @@ void APantinCharacter::BeginPlay()
 	ClimbSpeed = PantinDataAsset->ClimbSpeed;
 	ClimbMinArea = PantinDataAsset->ClimbMinArea;
 	ClimbPantinHeight = PantinDataAsset->ClimbPantinHeight;
+
+	
+	MaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
 }
 
 // Called every frame
@@ -65,5 +73,13 @@ void APantinCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void APantinCharacter::ActivateSprint(const bool bActivate)
+{
+	if (bActivate == IsSprinting) return;
+
+	IsSprinting = bActivate;
+	GetCharacterMovement()->MaxWalkSpeed = IsSprinting ? MaxSprintSpeed : MaxWalkSpeed;
 }
 
