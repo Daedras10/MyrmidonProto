@@ -19,7 +19,7 @@ void APantinCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (PantinDataAsset == nullptr) return;
+	if (PantinDataAsset == nullptr || !UseDataAsset) return;
 	
 	GetCharacterMovement()->GravityScale = PantinDataAsset->GravityScale;
 	GetCharacterMovement()->MaxAcceleration = PantinDataAsset->MaxAcceleration;
