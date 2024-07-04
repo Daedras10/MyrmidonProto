@@ -33,6 +33,9 @@ public:
 	UPantinDataAsset* PantinDataAsset;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool UseDataAsset = true;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float MaxGravity = 2.0f;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
