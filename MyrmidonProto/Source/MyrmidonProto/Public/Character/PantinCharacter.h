@@ -60,6 +60,9 @@ public:
 	bool IsSprinting = false;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float InvertVelocityMargin = -0.98;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float JumpBufferMax = 0.0;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
