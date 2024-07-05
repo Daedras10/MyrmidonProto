@@ -46,6 +46,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Walking")
 	float InvertVelocityMargin = -0.98f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Walking")
+	int FramesToCheckForInvertVelocity = 25;
 
 
 	
