@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "GodRay.generated.h"
 
 class UGodRayDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API AGodRay : public AActor
+class MYRMIDONPROTO_API AGodRay : public ASwitchBase
 {
 	GENERATED_BODY()
 	
