@@ -7,6 +7,7 @@
 #include "Engine/GameInstance.h"
 #include "RecordingGameInstance.generated.h"
 
+class UWorldDataAsset;
 /**
  * 
  */
@@ -32,5 +33,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void JumpToPoint(float time);
+
+
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UWorldDataAsset* WorldDataAsset;
 	
 };
