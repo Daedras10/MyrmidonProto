@@ -58,6 +58,12 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsSprinting = false;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float JumpBufferMax = 0.0;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float JumpBufferCurrent = 0.0;
 
 
 	

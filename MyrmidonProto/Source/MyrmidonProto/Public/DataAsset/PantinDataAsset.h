@@ -67,6 +67,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Jumping / Falling")
 	float JumpMaxHoldTime = 0.0f;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Jumping / Falling")
+	float JumpBuffer = 0.0f;
+
 
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Default")
