@@ -23,9 +23,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	virtual bool IsPickable() override;
-
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsPickupable = false;
 };

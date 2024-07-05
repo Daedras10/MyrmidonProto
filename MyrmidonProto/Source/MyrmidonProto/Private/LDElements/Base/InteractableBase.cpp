@@ -25,8 +25,3 @@ void AInteractableBase::Tick(float DeltaTime)
 
 }
 
-bool AInteractableBase::IsPickable()
-{
-	return IsPickupable;
-}
-
