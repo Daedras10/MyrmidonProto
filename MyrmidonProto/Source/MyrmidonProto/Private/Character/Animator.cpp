@@ -3,6 +3,8 @@
 
 #include "Character/Animator.h"
 
+#include "Net/UnrealNetwork.h"
+
 // Sets default values
 AAnimator::AAnimator()
 {
@@ -29,6 +31,12 @@ void AAnimator::Tick(float DeltaTime)
 void AAnimator::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
 
+void AAnimator::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AAnimator, CanMove);
+	DOREPLIFETIME(AAnimator, CanBeMovedByOthers);
 }
 

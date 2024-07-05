@@ -25,8 +25,3 @@ void ASwitchBase::Tick(float DeltaTime)
 
 }
 
-bool ASwitchBase::IsPickable()
-{
-	return IsPickupable;
-}
-
