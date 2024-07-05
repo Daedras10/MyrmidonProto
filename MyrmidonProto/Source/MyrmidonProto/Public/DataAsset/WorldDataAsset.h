@@ -17,6 +17,6 @@ class MYRMIDONPROTO_API UWorldDataAsset : public UPrimaryDataAsset
 
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "General Settings")
-	UWorld* WorldReference;
+	FSoftWorldReference WorldReference;
 	
 };
