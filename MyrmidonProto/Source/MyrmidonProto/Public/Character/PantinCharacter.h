@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Interfaces/Windable.h"
 #include "PantinCharacter.generated.h"
 
 class UPantinDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API APantinCharacter : public ACharacter
+class MYRMIDONPROTO_API APantinCharacter : public ACharacter, public IWindable
 {
 	GENERATED_BODY()
 
