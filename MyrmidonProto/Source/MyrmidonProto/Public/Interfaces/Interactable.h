@@ -57,6 +57,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	AActor* GetCorkBoard(); //TODO: Change to ACorkBoard
-	
-	virtual bool IsPickable() = 0;
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool IsPickable();
 };
