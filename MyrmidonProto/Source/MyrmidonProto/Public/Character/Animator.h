@@ -35,10 +35,10 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float ArmReach = 5000.0f;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
 	bool CanMove = true;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
 	bool CanBeMovedByOthers = false; //TODO remove this if GDs have no use for it
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
