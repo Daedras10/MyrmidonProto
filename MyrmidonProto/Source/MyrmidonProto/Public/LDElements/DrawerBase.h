@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Base/InteractableBase.h"
+#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "DrawerBase.generated.h"
 
 class UDrawerBaseDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API ADrawerBase : public AActor
+class MYRMIDONPROTO_API ADrawerBase : public AInteractableBase
 {
 	GENERATED_BODY()
 	
