@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "DestroyingPlatform.generated.h"
 
 class UDestroyingPlatformDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API ADestroyingPlatform : public AActor
+class MYRMIDONPROTO_API ADestroyingPlatform : public ASwitchBase
 {
 	GENERATED_BODY()
 	

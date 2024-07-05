@@ -41,6 +41,8 @@ void APantinCharacter::BeginPlay()
 	GetCharacterMovement()->AirControlBoostMultiplier = PantinDataAsset->AirControlBoostMultiplier;
 	GetCharacterMovement()->AirControlBoostVelocityThreshold = PantinDataAsset->AirControlBoostVelocityThreshold;
 	GetCharacterMovement()->FallingLateralFriction = PantinDataAsset->FallingLateralFriction;
+	JumpMaxHoldTime = PantinDataAsset->JumpMaxHoldTime;
+	JumpBufferMax = PantinDataAsset->JumpBuffer;
 
 	MaxGravity = PantinDataAsset->MaxGravity;
 	MinGravity = PantinDataAsset->MinGravity;
