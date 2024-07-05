@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Base/InteractableBase.h"
-#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "DrawerBase.generated.h"
 
