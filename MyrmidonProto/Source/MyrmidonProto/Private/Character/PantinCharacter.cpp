@@ -49,6 +49,7 @@ void APantinCharacter::BeginPlay()
 	FunkyGravityDuration = PantinDataAsset->FunkyGravityDuration;
 	CoyoteTime = PantinDataAsset->CoyoteTime;
 	MaxSprintSpeed = PantinDataAsset->MaxSprintSpeed;
+	InvertVelocityMargin = PantinDataAsset->InvertVelocityMargin;
 
 	WindPower = PantinDataAsset->WindPower;
 	WindMaxHit = PantinDataAsset->WindMaxHit;
