@@ -21,6 +21,18 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	virtual FVector GetFirstVelocityToCheck();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	virtual FVector GetFirstForwardToCheck();
+
+	UFUNCTION(BlueprintCallable)
+	virtual void AddLastVelocityAndForward();
+
+	UFUNCTION(BlueprintCallable)
+	virtual void ClearVelocityAndForwardMemory();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -92,5 +104,15 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Climb")
 	float ClimbSpeed = 5.0f;
+
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FVector> LastVelocities = TArray<FVector>();
+	
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FVector> LastForwards = TArray<FVector>();
+
+	UPROPERTY(BlueprintReadWrite)
+	int FramesToCheckForInvertVelocity;
 
 };

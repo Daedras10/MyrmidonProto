@@ -59,9 +59,45 @@ void APantinCharacter::BeginPlay()
 	ClimbSpeed = PantinDataAsset->ClimbSpeed;
 	ClimbMinArea = PantinDataAsset->ClimbMinArea;
 	ClimbPantinHeight = PantinDataAsset->ClimbPantinHeight;
-
 	
 	MaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
+
+	LastVelocities = TArray<FVector>();
+	LastForwards = TArray<FVector>();
+	FramesToCheckForInvertVelocity = PantinDataAsset->FramesToCheckForInvertVelocity;
+}
+
+FVector APantinCharacter::GetFirstVelocityToCheck()
+{
+	if (LastVelocities.Num() == 0) return GetCharacterMovement()->Velocity;
+
+	return LastVelocities[0];
+}
+
+FVector APantinCharacter::GetFirstForwardToCheck()
+{
+	if (LastForwards.Num() == 0) return GetMesh()->GetForwardVector();
+	
+	return LastForwards[0];
+}
+
+void APantinCharacter::AddLastVelocityAndForward()
+{
+	const auto Velocity = GetCharacterMovement()->Velocity;
+	const auto Forward = GetMesh()->GetForwardVector();
+	
+	LastVelocities.Add(Velocity);
+	LastForwards.Add(Forward);
+	if (LastVelocities.Num() <= FramesToCheckForInvertVelocity) return;
+
+	LastVelocities.RemoveAt(0);
+	LastForwards.RemoveAt(0);
+}
+
+void APantinCharacter::ClearVelocityAndForwardMemory()
+{
+	LastVelocities.Empty();
+	LastForwards.Empty();
 }
 
 // Called every frame
