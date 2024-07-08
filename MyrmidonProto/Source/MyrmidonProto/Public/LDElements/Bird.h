@@ -13,7 +13,9 @@ enum class EBirdAction : uint8
 	Idle,
 	FlyingAway,
 	GoingBack,
-	WaitingForSafeSpot
+	WaitingForSafeSpot,
+	Hovering,
+	WindResistance
 };
 
 /**
@@ -34,17 +36,24 @@ protected:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	virtual FText GetDebugText();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Timer = 0.0f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Speed = 1.0f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float WaitingTime = 5.0f;
+	float HoverTime = 3.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float WindResistanceTime = 2.0f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool BaseIsexposed = false;
@@ -60,5 +69,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FVector WindDirection;
+
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
+	float CurrentPosAlongSpline;
 	
 };
