@@ -25,6 +25,28 @@ void ABird::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePro
 
 	DOREPLIFETIME(ABird, CurrentAction);
 	DOREPLIFETIME(ABird, IdleLocation);
+	DOREPLIFETIME(ABird, CurrentPosAlongSpline);
+}
+
+FText ABird::GetDebugText()
+{
+	switch (CurrentAction)
+	{
+		case EBirdAction::Idle:
+			return FText::FromString("Idle");
+		case EBirdAction::FlyingAway:
+			return FText::FromString("FlyingAway");
+		case EBirdAction::GoingBack:
+			return FText::FromString("GoingBack");
+		case EBirdAction::WaitingForSafeSpot:
+			return FText::FromString("WaitingForSafeSpot");
+		case EBirdAction::Hovering:
+			return FText::FromString("Hovering");
+		case EBirdAction::WindResistance:
+			return FText::FromString("WindResistance");
+		default:
+			return FText::FromString("Unknown");
+	}
 }
 
 // Called every frame
