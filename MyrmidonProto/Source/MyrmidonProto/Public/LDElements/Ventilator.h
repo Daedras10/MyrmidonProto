@@ -6,10 +6,11 @@
 #include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/VisualSwitcher.h"
+#include "Interfaces/WindIgnored.h"
 #include "Ventilator.generated.h"
 
 UCLASS()
-class MYRMIDONPROTO_API AVentilator : public ASwitchBase
+class MYRMIDONPROTO_API AVentilator : public ASwitchBase, public IWindIgnored 
 {
 	GENERATED_BODY()
 	
