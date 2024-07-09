@@ -3,12 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/VisualSwitcher.h"
+#include "Interfaces/WindIgnored.h"
 #include "Ventilator.generated.h"
 
 UCLASS()
-class MYRMIDONPROTO_API AVentilator : public AActor, public IVisualSwitcher
+class MYRMIDONPROTO_API AVentilator : public ASwitchBase, public IWindIgnored 
 {
 	GENERATED_BODY()
 	
@@ -33,6 +35,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FVector WindBoxScale = FVector(1.0f, 1.0f, 1.0f);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FVector WindBoxOffset = FVector(0.0f, 0.0f, 0.0f);
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float VentilatorHeightMult = 1.0f;
