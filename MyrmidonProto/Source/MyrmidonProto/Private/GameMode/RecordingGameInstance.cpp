@@ -8,6 +8,8 @@ void URecordingGameInstance::StartRecording(FString sequenceName)
 {
 	if (isRecording) return;
 	isRecording = true;
+	TArray<FString> Options;
+	Options.Add("ReplayStreamerOverride=InMemoryNetworkReplayStreaming");
 	StartRecordingReplay(sequenceName,"Friendly");
 }
 
@@ -20,7 +22,9 @@ void URecordingGameInstance::StopRecording()
 
 void URecordingGameInstance::StartReplay(FString sequenceName)
 {
-	PlayReplay(sequenceName);
+	TArray<FString> Options;
+	Options.Add("ReplayStreamerOverride=InMemoryNetworkReplayStreaming");
+	PlayReplay(sequenceName,nullptr, Options);
 	inReplay = true;
 }
 
