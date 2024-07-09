@@ -39,6 +39,9 @@ public:
 	float DelayBeforeMovement = 0.5f;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool StartClosed = true;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UDrawerBaseDataAsset* DataAsset;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
