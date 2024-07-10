@@ -44,12 +44,6 @@ public:
 	UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
 	void ActivateSprint(const bool bActivate);
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void Kill();
-
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void Respawn();
-
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UPantinDataAsset* PantinDataAsset;
