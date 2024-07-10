@@ -44,6 +44,12 @@ public:
 	UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
 	void ActivateSprint(const bool bActivate);
 
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Kill();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Respawn();
+
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UPantinDataAsset* PantinDataAsset;
@@ -115,5 +121,8 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	int FramesToCheckForInvertVelocity;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool IsAlive = true;
 
 };

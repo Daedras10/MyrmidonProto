@@ -114,6 +114,14 @@ void APantinCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+void APantinCharacter::Respawn_Implementation()
+{
+}
+
+void APantinCharacter::Kill_Implementation()
+{
+}
+
 void APantinCharacter::ActivateSprint_Implementation(const bool bActivate)
 {
 	if (bActivate == IsSprinting) return;
