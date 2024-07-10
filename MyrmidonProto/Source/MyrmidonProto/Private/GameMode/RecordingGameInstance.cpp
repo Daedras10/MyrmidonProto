@@ -24,7 +24,7 @@ void URecordingGameInstance::StartReplay(FString sequenceName)
 {
 	TArray<FString> Options;
 	Options.Add("ReplayStreamerOverride=InMemoryNetworkReplayStreaming");
-	PlayReplay(sequenceName,nullptr, Options);
+	PlayReplay(sequenceName);
 	inReplay = true;
 }
 

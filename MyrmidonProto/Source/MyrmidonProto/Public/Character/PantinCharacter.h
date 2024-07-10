@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Interfaces/Interactable.h"
 #include "Interfaces/Windable.h"
 #include "PantinCharacter.generated.h"
 
 class UPantinDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API APantinCharacter : public ACharacter, public IWindable
+class MYRMIDONPROTO_API APantinCharacter : public ACharacter, public IWindable, public IInteractable
 {
 	GENERATED_BODY()
 
@@ -115,5 +116,8 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	int FramesToCheckForInvertVelocity;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool IsAlive = true;
 
 };

@@ -8,11 +8,11 @@ public class MyrmidonProto : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AdvancedSessions", "AdvancedSessions" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AdvancedSessions", "AdvancedSessions"});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
-        //DynamicallyLoadedModuleNames.AddRange(new string[] { "InMemoryNetworkReplayStreaming"});
+        DynamicallyLoadedModuleNames.AddRange(new string[] { "NetworkReplayStreaming", "InMemoryNetworkReplayStreaming"});
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
