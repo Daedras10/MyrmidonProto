@@ -116,4 +116,7 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	int FramesToCheckForInvertVelocity;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool IsAlive = true;
+
 };
