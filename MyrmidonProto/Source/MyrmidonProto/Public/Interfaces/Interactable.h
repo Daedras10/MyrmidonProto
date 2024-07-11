@@ -14,8 +14,7 @@ class UInteractable : public UInterface
 };
 
 /**
- * 
- */
+ **/
 class MYRMIDONPROTO_API IInteractable
 {
 	GENERATED_BODY()
