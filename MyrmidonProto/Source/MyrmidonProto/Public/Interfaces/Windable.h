@@ -27,4 +27,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetActiveWind(bool bIsActive);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool SetActiveOutsideTriger();
 };

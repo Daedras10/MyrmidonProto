@@ -56,7 +56,7 @@ public:
 	void SetHighlighted(bool bShouldHighlight);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	AActor* GetCorkBoard(); //TODO: Change to ACorkBoard
+	int GetCorkBoardIndex();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();

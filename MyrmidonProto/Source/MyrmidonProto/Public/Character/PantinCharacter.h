@@ -108,6 +108,20 @@ public:
 	float ClimbSpeed = 5.0f;
 
 
+
+	
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float RespawnCurrent = 0.0;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float RespawnSpeed = 10.0;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool IsRespawning = false;
+	
+
+
 	UPROPERTY(BlueprintReadWrite)
 	TArray<FVector> LastVelocities = TArray<FVector>();
 	
