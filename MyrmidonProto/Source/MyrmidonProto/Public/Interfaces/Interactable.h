@@ -52,6 +52,9 @@ public:
 	void EndHover();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void Moved(FVector position);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetHighlighted(bool bShouldHighlight);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
