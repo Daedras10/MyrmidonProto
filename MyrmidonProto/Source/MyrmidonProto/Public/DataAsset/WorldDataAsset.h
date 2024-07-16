@@ -19,4 +19,10 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "General Settings")
 	FSoftWorldReference WorldReference;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "General Settings")
+	bool DebugSoloPlayerIsPantin = true;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "General Settings")
+	int DebugCurrentCheckpointIndex = 0;
+	
 };

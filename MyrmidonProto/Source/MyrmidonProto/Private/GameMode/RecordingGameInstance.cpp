@@ -2,6 +2,8 @@
 
 
 #include "GameMode/RecordingGameInstance.h"
+
+#include "DataAsset/WorldDataAsset.h"
 #include "Engine/DemoNetDriver.h"
 
 void URecordingGameInstance::StartRecording(FString sequenceName)
@@ -31,4 +33,12 @@ void URecordingGameInstance::StartReplay(FString sequenceName)
 void URecordingGameInstance::JumpToPoint(float time)
 {
 	GetWorld()->GetDemoNetDriver()->GotoTimeInSeconds(time);
+}
+
+void URecordingGameInstance::Init()
+{
+	Super::Init();
+
+	if (!UseDataAsset || !WorldDataAsset) return;
+	IsPantin = WorldDataAsset->DebugSoloPlayerIsPantin;
 }

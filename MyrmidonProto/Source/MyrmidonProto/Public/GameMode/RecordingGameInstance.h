@@ -22,6 +22,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool inReplay = false;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool IsPantin = false;
+
 	UFUNCTION(BlueprintCallable)
 	void StartRecording(FString sequenceName);
 
@@ -38,5 +41,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UWorldDataAsset* WorldDataAsset;
-	
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool UseDataAsset = true;
+
+	void Init() override;
 };
