@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Base/SwitchBase.h"
 #include "GameFramework/Actor.h"
 #include "Mole.generated.h"
 
 UCLASS()
-class MYRMIDONPROTO_API AMole : public AActor
+class MYRMIDONPROTO_API AMole : public ASwitchBase
 {
 	GENERATED_BODY()
 	
