@@ -61,5 +61,8 @@ public:
 	int GetCorkBoardIndex();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	FVector GetInterractPoint();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();
 };
