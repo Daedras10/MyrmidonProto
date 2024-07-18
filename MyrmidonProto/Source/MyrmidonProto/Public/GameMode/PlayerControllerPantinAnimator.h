@@ -53,16 +53,16 @@ public:
 	void OnCircleNegative();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void CirclePositiveProgression(int Progression);
+	void CirclePositiveProgression(float Progression);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void CirclePositiveCancelled(int Progression);
+	void CirclePositiveCancelled(float Progression);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void CircleNegativeProgression(int Progression);
+	void CircleNegativeProgression(float Progression);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void CircleNegativeCancelled(int Progression);
+	void CircleNegativeCancelled(float Progression);
 
 	
 	
@@ -70,6 +70,14 @@ public:
 	TArray<EDirection> DirectionsNegative;
 
 	float CircleThreshold = 0.95f;
+	float AngleKindness = 15.0f;
 	float CircleNotInteractingMaxTime = 0.5f;
 	float CircleNotInteractingTime = 0.0f; // Time since last input
+
+	float CircleStartAngle = -1.0f;
+
+	float ProgressionAllowed = 0.15f;
+
+	float CurrentProgressionPositive = 0.0f;
+	float CurrentProgressionNegative = 0.0f;
 };
