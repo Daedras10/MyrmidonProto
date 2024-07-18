@@ -16,6 +16,8 @@ void ABridge::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 
 	DOREPLIFETIME(ABridge, BridgeIsMoving);
 	DOREPLIFETIME(ABridge, Closing);
+	DOREPLIFETIME(ABridge, LastFinishedStateWasClose);
+	DOREPLIFETIME(ABridge, ProgressionAim);
 }
 
 void ABridge::Tick(float DeltaTime)
