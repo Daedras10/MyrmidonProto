@@ -7,13 +7,13 @@ void APlayerControllerPantinAnimator::ConvertInputs(FVector2D Inputs)
 {
 	InputsToCirclePositive(Inputs);
 	
-	if ( abs(Inputs.X) <= 0.01 )
+	if ( FMath::Abs(Inputs.X) <= 0.01 )
 	{
 		if (Inputs.Y < 0) InputDirection(EDirection::Up);
 		else InputDirection(EDirection::Down);
 		return;
 	}
-	if ( abs(Inputs.Y) <= 0.01 )
+	if ( FMath::Abs(Inputs.Y) <= 0.01 )
 	{
 		if (Inputs.X > 0) InputDirection(EDirection::Right);
 		else InputDirection(EDirection::Left);
@@ -27,24 +27,30 @@ void APlayerControllerPantinAnimator::ConvertInputs(FVector2D Inputs)
 	if (Inputs.X < 0 && Inputs.Y > 0) InputDirection(EDirection::DownLeft);
 }
 
-void APlayerControllerPantinAnimator::InputsToCirclePositive(FVector2D Inputs)
+void APlayerControllerPantinAnimator::InputsToCirclePositive(const FVector2D Inputs)
 {
-	// 0 for now
-	if (DirectionsPositive.Num() == 0) return;
-	
+	const auto Angle = FMath::Atan2(Inputs.Y, Inputs.X);
+	const auto AngleDeg = FMath::RadiansToDegrees(Angle);
+	const auto AngleDegNormalized = FMath::Fmod(AngleDeg + 360, 360);
 
-	
-	auto Angle = FMath::Atan2(Inputs.Y, Inputs.X);
-	auto AngleDeg = FMath::RadiansToDegrees(Angle);
-	auto AngleDegNormalized = FMath::Fmod(AngleDeg + 360, 360);
+	if (CircleStartAngle < 0)
+	{
+		CircleStartAngle = AngleDegNormalized;
+		CurrentProgressionPositive = 0;
+		CirclePositiveProgression(0);
+		return;
+	}
 
-	auto KindAngle = AngleDegNormalized + 15;
+	const auto Progression = AngleDegNormalized - CircleStartAngle;
+	auto KindAngle = Progression + AngleKindness;
 	if (KindAngle > 360) KindAngle = 360;
-	
-	auto Percent = KindAngle / 360.0f;
-	
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Angle: %f, Percent: %f"), KindAngle, Percent*100));
-	
+
+	const auto Percent = KindAngle / 360.0f;
+
+	if (FMath::Abs(Percent - CurrentProgressionPositive) > ProgressionAllowed ) return;
+
+	CurrentProgressionPositive = Percent;
+	CirclePositiveProgression(Percent);
 }
 
 void APlayerControllerPantinAnimator::InputDirection(const EDirection Direction)
@@ -69,7 +75,7 @@ void APlayerControllerPantinAnimator::InputDirection(const EDirection Direction)
 	
 }
 
-void APlayerControllerPantinAnimator::AddInputDirectionPositive(EDirection Direction)
+void APlayerControllerPantinAnimator::AddInputDirectionPositive(const EDirection Direction)
 {
 	if (DirectionsPositive.Contains(Direction)) return;
 
@@ -82,7 +88,7 @@ void APlayerControllerPantinAnimator::AddInputDirectionPositive(EDirection Direc
 	if (Direction == NextDirection(DirectionsPositive.Last(), true) ) DirectionsPositive.AddUnique(Direction);
 }
 
-void APlayerControllerPantinAnimator::AddInputDirectionNegative(EDirection Direction)
+void APlayerControllerPantinAnimator::AddInputDirectionNegative(const EDirection Direction)
 {
 	if (DirectionsNegative.Contains(Direction)) return;
 
@@ -124,23 +130,28 @@ void APlayerControllerPantinAnimator::ClearDirections()
 {
 	DirectionsPositive.Empty();
 	DirectionsNegative.Empty();
+	CircleStartAngle = -1.0f;
+
+	CurrentProgressionNegative = 0;
+	CurrentProgressionPositive = 0;
 }
 
-void APlayerControllerPantinAnimator::CircleNegativeCancelled_Implementation(int Progression)
+void APlayerControllerPantinAnimator::CircleNegativeCancelled_Implementation(float Progression)
 {
 }
 
-void APlayerControllerPantinAnimator::CircleNegativeProgression_Implementation(int Progression)
+void APlayerControllerPantinAnimator::CircleNegativeProgression_Implementation(float Progression)
 {
 }
 
-void APlayerControllerPantinAnimator::CirclePositiveCancelled_Implementation(int Progression)
+void APlayerControllerPantinAnimator::CirclePositiveCancelled_Implementation(float Progression)
 {
 	
 }
 
-void APlayerControllerPantinAnimator::CirclePositiveProgression_Implementation(int Progression)
+void APlayerControllerPantinAnimator::CirclePositiveProgression_Implementation(float Progression)
 {
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f"), Progression*100.0f));
 }
 
 void APlayerControllerPantinAnimator::OnCircleNegative_Implementation()
