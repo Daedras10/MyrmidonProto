@@ -7,6 +7,12 @@ void APlayerControllerPantinAnimator::ConvertInputs(FVector2D Inputs)
 {
 	InputsToCirclePositive(Inputs);
 	InputsToCircleNegative(Inputs);
+
+	//Start timer to cancel circle with CircleInputTimeoutHandle
+	GetWorld()->GetTimerManager().ClearTimer(CircleInputTimeoutHandle);
+	GetWorld()->GetTimerManager().SetTimer(CircleInputTimeoutHandle, this, &APlayerControllerPantinAnimator::CancelCircle, CircleNotInteractingMaxTime, false);
+
+	
 	return;
 	
 	if ( FMath::Abs(Inputs.X) <= 0.01 )
@@ -187,6 +193,15 @@ void APlayerControllerPantinAnimator::ClearDirections()
 
 	CurrentProgressionNegative = 0;
 	CurrentProgressionPositive = 0;
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Clear Directions"));
+}
+
+void APlayerControllerPantinAnimator::CancelCircle()
+{
+	CirclePositiveCancelled(CurrentProgressionPositive);
+	CircleNegativeCancelled(CurrentProgressionNegative);
+	ClearDirections();
 }
 
 void APlayerControllerPantinAnimator::CircleNegativeCancelled_Implementation(float Progression)

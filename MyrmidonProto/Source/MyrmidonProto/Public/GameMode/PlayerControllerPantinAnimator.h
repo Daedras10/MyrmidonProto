@@ -70,15 +70,33 @@ public:
 	TArray<EDirection> DirectionsPositive;
 	TArray<EDirection> DirectionsNegative;
 
+	UPROPERTY(BlueprintReadWrite)
 	float CircleThreshold = 0.95f;
-	float AngleKindness = 0; //15.0f;
-	float CircleNotInteractingMaxTime = 0.5f;
-	float CircleNotInteractingTime = 0.0f; // Time since last input
 
+	UPROPERTY(BlueprintReadWrite)
+	float AngleKindness = 0; //15.0f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float CircleNotInteractingMaxTime = 0.5f;
+
+	// UPROPERTY(BlueprintReadWrite)
+	// float CircleNotInteractingTime = 0.0f; // Time since last input
+
+	UPROPERTY(BlueprintReadWrite)
 	float CircleStartAngle = -1.0f;
 
-	float ProgressionAllowed = 0.15f;
+	UPROPERTY(BlueprintReadWrite)
+	float ProgressionAllowed = 0.05f;
 
+	UPROPERTY(BlueprintReadWrite)
 	float CurrentProgressionPositive = 0.0f;
+
+	UPROPERTY(BlueprintReadWrite)
 	float CurrentProgressionNegative = 0.0f;
+
+
+private:
+	void CancelCircle();
+	
+	FTimerHandle CircleInputTimeoutHandle;
 };

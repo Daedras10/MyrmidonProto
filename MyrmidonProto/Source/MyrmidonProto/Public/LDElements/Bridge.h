@@ -24,22 +24,36 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge settings")
 	float Speed = 0.0f;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge settings")
 	FVector Bridge1Scale = FVector(1.0f, 1.0f, 1.0f);
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge settings")
 	FVector Bridge2Scale = FVector(1.0f, 1.0f, 1.0f);
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge settings")
+	bool StartClosed = true;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
+	
+
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge progression")
+	float ProgressionAim = 0;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge progression")
+	float CurrentProgress = 0;
+	
+
+
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool BridgeIsMoving = false;
 	
-	UPROPERTY(BlueprintReadWrite, Replicated)
+	UPROPERTY(BlueprintReadWrite, Replicated, Category="Bridge states")
 	bool Closing = true;
 	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	bool StartClosed = true;
+	UPROPERTY(BlueprintReadWrite, Replicated, Category="Bridge states")
+	bool LastFinishedStateWasClose = true;
 };
