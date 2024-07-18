@@ -45,15 +45,18 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge progression")
 	float CurrentProgress = 0;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Bridge progression")
+	float CloseThreashold = 0.10;
+	
 
 
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool BridgeIsMoving = false;
 	
-	UPROPERTY(BlueprintReadWrite, Replicated, Category="Bridge states")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool Closing = true;
 	
-	UPROPERTY(BlueprintReadWrite, Replicated, Category="Bridge states")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool LastFinishedStateWasClose = true;
 };
