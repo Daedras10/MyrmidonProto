@@ -31,6 +31,8 @@ class MYRMIDONPROTO_API APlayerControllerPantinAnimator : public APlayerControll
 public:
 	UFUNCTION(BlueprintCallable)
 	void ConvertInputs(FVector2D Inputs);
+	
+	void InputsToCirclePositive(FVector2D Inputs);
 
 	UFUNCTION(BlueprintCallable)
 	void InputDirection(EDirection Direction);
@@ -50,10 +52,24 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void OnCircleNegative();
 
-	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void CirclePositiveProgression(int Progression);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void CirclePositiveCancelled(int Progression);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void CircleNegativeProgression(int Progression);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void CircleNegativeCancelled(int Progression);
 
 	
-
+	
 	TArray<EDirection> DirectionsPositive;
 	TArray<EDirection> DirectionsNegative;
+
+	float CircleThreshold = 0.95f;
+	float CircleNotInteractingMaxTime = 0.5f;
+	float CircleNotInteractingTime = 0.0f; // Time since last input
 };
