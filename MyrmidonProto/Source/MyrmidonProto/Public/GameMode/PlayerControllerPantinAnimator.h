@@ -33,6 +33,7 @@ public:
 	void ConvertInputs(FVector2D Inputs);
 	
 	void InputsToCirclePositive(FVector2D Inputs);
+	void InputsToCircleNegative(FVector2D Inputs);
 
 	UFUNCTION(BlueprintCallable)
 	void InputDirection(EDirection Direction);
@@ -70,7 +71,7 @@ public:
 	TArray<EDirection> DirectionsNegative;
 
 	float CircleThreshold = 0.95f;
-	float AngleKindness = 15.0f;
+	float AngleKindness = 0; //15.0f;
 	float CircleNotInteractingMaxTime = 0.5f;
 	float CircleNotInteractingTime = 0.0f; // Time since last input
 
