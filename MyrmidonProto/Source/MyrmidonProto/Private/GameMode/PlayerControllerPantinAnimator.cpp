@@ -5,6 +5,8 @@
 
 void APlayerControllerPantinAnimator::ConvertInputs(FVector2D Inputs)
 {
+	InputsToCirclePositive(Inputs);
+	
 	if ( abs(Inputs.X) <= 0.01 )
 	{
 		if (Inputs.Y < 0) InputDirection(EDirection::Up);
@@ -23,6 +25,26 @@ void APlayerControllerPantinAnimator::ConvertInputs(FVector2D Inputs)
 	if (Inputs.X > 0 && Inputs.Y > 0) InputDirection(EDirection::DownRight);
 	if (Inputs.X < 0 && Inputs.Y < 0) InputDirection(EDirection::UpLeft);
 	if (Inputs.X < 0 && Inputs.Y > 0) InputDirection(EDirection::DownLeft);
+}
+
+void APlayerControllerPantinAnimator::InputsToCirclePositive(FVector2D Inputs)
+{
+	// 0 for now
+	if (DirectionsPositive.Num() == 0) return;
+	
+
+	
+	auto Angle = FMath::Atan2(Inputs.Y, Inputs.X);
+	auto AngleDeg = FMath::RadiansToDegrees(Angle);
+	auto AngleDegNormalized = FMath::Fmod(AngleDeg + 360, 360);
+
+	auto KindAngle = AngleDegNormalized + 15;
+	if (KindAngle > 360) KindAngle = 360;
+	
+	auto Percent = KindAngle / 360.0f;
+	
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Angle: %f, Percent: %f"), KindAngle, Percent*100));
+	
 }
 
 void APlayerControllerPantinAnimator::InputDirection(const EDirection Direction)
@@ -102,6 +124,23 @@ void APlayerControllerPantinAnimator::ClearDirections()
 {
 	DirectionsPositive.Empty();
 	DirectionsNegative.Empty();
+}
+
+void APlayerControllerPantinAnimator::CircleNegativeCancelled_Implementation(int Progression)
+{
+}
+
+void APlayerControllerPantinAnimator::CircleNegativeProgression_Implementation(int Progression)
+{
+}
+
+void APlayerControllerPantinAnimator::CirclePositiveCancelled_Implementation(int Progression)
+{
+	
+}
+
+void APlayerControllerPantinAnimator::CirclePositiveProgression_Implementation(int Progression)
+{
 }
 
 void APlayerControllerPantinAnimator::OnCircleNegative_Implementation()
