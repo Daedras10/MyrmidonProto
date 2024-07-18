@@ -13,6 +13,22 @@ class UInteractable : public UInterface
 	GENERATED_BODY()
 };
 
+USTRUCT(Blueprintable)
+struct FSTRUC_InputInfos {
+	GENERATED_BODY()
+public:
+	UPROPERTY(BlueprintReadWrite)
+	 bool twoInputs;
+	UPROPERTY(BlueprintReadWrite)
+	 FString inputOneText;
+	UPROPERTY(BlueprintReadWrite)
+	 FString inputTwoText;
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconOne;
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconTwo;
+};
+
 /**
  **/
 class MYRMIDONPROTO_API IInteractable
@@ -64,5 +80,9 @@ public:
 	FVector GetInterractPoint();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	FSTRUC_InputInfos GetInputInfos();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();
 };
+
