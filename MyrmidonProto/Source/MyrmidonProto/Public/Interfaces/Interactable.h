@@ -90,5 +90,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool IsPicked();
 };
 
