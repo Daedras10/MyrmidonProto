@@ -77,6 +77,9 @@ public:
 	int GetCorkBoardIndex();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	float GetCorkOffset();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	FVector GetInterractPoint();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
