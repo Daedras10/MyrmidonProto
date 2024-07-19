@@ -67,7 +67,7 @@ void APlayerControllerPantinAnimator::InputsToCirclePositive(const FVector2D Inp
 	if (Percent == 1.0f)
 	{
 		OnCirclePositive();
-		ClearDirections();
+		//ClearDirections();
 	}
 
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
@@ -106,7 +106,7 @@ void APlayerControllerPantinAnimator::InputsToCircleNegative(FVector2D Inputs)
 	if (Percent == 1.0f)
 	{
 		OnCircleNegative();
-		ClearDirections();
+		//ClearDirections();
 	}
 
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
