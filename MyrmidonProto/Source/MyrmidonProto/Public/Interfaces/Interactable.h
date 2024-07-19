@@ -83,9 +83,15 @@ public:
 	FVector GetInterractPoint();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	FVector GetRectMargins();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	FSTRUC_InputInfos GetInputInfos();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool IsPicked();
 };
 
