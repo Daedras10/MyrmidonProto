@@ -32,4 +32,15 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool UseDataAsset = true;
 
+
+	/* Settings */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float FallingSpeed = 30.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float FallingMaxSpeed = -50.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float JumpPower = 250.0f;
+
 };
