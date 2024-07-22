@@ -100,6 +100,33 @@ void APantinCharacter::ClearVelocityAndForwardMemory()
 	LastForwards.Empty();
 }
 
+FVector APantinCharacter::ConvertInputToWind(const FVector Input)
+{
+	if (!WindIsActive) return Input;
+
+	const auto WindNormalized = WindDirection.GetSafeNormal();
+	const auto InputNormalized = FVector(Input.X, Input.Y, 0.0f).GetSafeNormal();
+
+	const auto Dot = FVector::DotProduct(WindNormalized, InputNormalized);
+
+	if (Dot > 0.0f) return Input;
+
+	auto WindedInput = InputNormalized + WindNormalized;
+
+	auto MultX = Input.X / WindedInput.X;
+	auto MultY = Input.Y / WindedInput.Y;
+
+	auto Mults = FVector(MultX, MultY, 1.0f);
+	
+	//TODO : Fix, Take the smallest ?
+	
+	return Mults;
+	
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Dot: %f"), Dot));
+	
+	return Input;
+}
+
 // Called every frame
 void APantinCharacter::Tick(float DeltaTime)
 {
