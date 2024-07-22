@@ -35,9 +35,12 @@ public:
 
 	/* Settings */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
-	float FallingSpeed = 1.0f;
+	float FallingSpeed = 30.0f;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
-	float PushPower = 1.0f;
+	float FallingMaxSpeed = -50.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float JumpPower = 250.0f;
 
 };
