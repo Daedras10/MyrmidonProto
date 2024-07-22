@@ -22,7 +22,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "Settings")
+	void UpdateFromDataAsset();
+
+	virtual void OnConstruction(const FTransform& Transform) override;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
@@ -42,5 +47,22 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
 	float JumpPower = 250.0f;
+
+
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	FVector RayWidthScale = FVector(2.0f, 2.0f, 4.0f);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float RayAttraction = 3.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float SpotSpeed = 1000.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings", meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMax = "1.0"))
+	float MaxHeight = 1.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings", meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMax = "1.0"))
+	float InitialPosition = 0.5f;
 
 };
