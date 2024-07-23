@@ -35,6 +35,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	virtual void ClearVelocityAndForwardMemory();
 
+	UFUNCTION(BlueprintCallable)
+	FVector ConvertInputToWind(const FVector Input); 
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -89,12 +92,21 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	int WindMaxHit = 3;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Wind")
+	float WindHitPoints = 0;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	float OppositInputsMult = 0.6f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	FVector WindDirection = FVector(1.0f, 0.0f, 0.0f);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
+	bool WindIsActive = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	bool IsCovered = false;
 
 
 
@@ -133,5 +145,18 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool IsAlive = true;
+
+
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	bool RunningAgainstWind = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	bool LastRunningAgainstWind = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	bool RunningWithWind = false;
+
+	
 
 };

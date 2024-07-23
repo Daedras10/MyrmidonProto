@@ -100,6 +100,54 @@ void APantinCharacter::ClearVelocityAndForwardMemory()
 	LastForwards.Empty();
 }
 
+FVector APantinCharacter::ConvertInputToWind(const FVector Input)
+{
+	const auto HitStrenght = 1 + (WindHitPoints / static_cast<float>(WindMaxHit));
+	
+	if (!WindIsActive || WindHitPoints == WindMaxHit)
+	{
+		RunningAgainstWind = false;
+		RunningWithWind = false;
+		LastRunningAgainstWind = RunningAgainstWind;
+		return Input;
+	}
+
+	const auto WindNormalized = WindDirection.GetSafeNormal();
+	const auto InputNormalized = FVector(Input.X, Input.Y, 0.0f).GetSafeNormal();
+
+	const auto Dot = FVector::DotProduct(WindNormalized, InputNormalized);
+
+	if (Dot > 0.0f)
+	{
+		RunningAgainstWind = false;
+		RunningWithWind = true;
+		LastRunningAgainstWind = RunningAgainstWind;
+		return Input;
+	}
+
+	const auto DotX = FVector::DotProduct(WindNormalized, FVector(-1.0f, 0.0f, 0.0f));
+	const auto DotY = FVector::DotProduct(WindNormalized, FVector(0.0f, -1.0f, 0.0f));
+
+	auto Multiplicators = FVector(1.0f, 1.0f, 1.0f);
+	Multiplicators.X = FMath::Max(1-DotX, OppositInputsMult);
+	Multiplicators.Y = FMath::Max(1-DotY, OppositInputsMult);
+
+	Multiplicators *= HitStrenght;
+	Multiplicators.X = FMath::Min(Multiplicators.X, 1.0f);
+	Multiplicators.Y = FMath::Min(Multiplicators.Y, 1.0f);
+	Multiplicators.Z = FMath::Min(Multiplicators.Z, 1.0f);
+	
+	
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("MultX: %f, MultY: %f"), Mults.X, Mults.Y));
+
+	auto NewInputs = FVector(Input.X * Multiplicators.X, Input.Y * Multiplicators.Y, Input.Z);
+	RunningAgainstWind = true;
+	RunningWithWind = false;
+	LastRunningAgainstWind = RunningAgainstWind;
+	
+	return NewInputs;
+}
+
 // Called every frame
 void APantinCharacter::Tick(float DeltaTime)
 {
