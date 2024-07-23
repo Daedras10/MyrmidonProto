@@ -102,7 +102,9 @@ void APantinCharacter::ClearVelocityAndForwardMemory()
 
 FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 {
-	if (!WindIsActive)
+	const auto HitStrenght = 1 + (WindHitPoints / static_cast<float>(WindMaxHit));
+	
+	if (!WindIsActive || WindHitPoints == WindMaxHit)
 	{
 		RunningAgainstWind = false;
 		RunningWithWind = false;
@@ -127,8 +129,14 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 	const auto DotY = FVector::DotProduct(WindNormalized, FVector(0.0f, -1.0f, 0.0f));
 
 	auto Multiplicators = FVector(1.0f, 1.0f, 1.0f);
-	Multiplicators.X = FMath::Max(1-DotX, 0.1f);
-	Multiplicators.Y = FMath::Max(1-DotY, 0.1f);
+	Multiplicators.X = FMath::Max(1-DotX, OppositInputsMult);
+	Multiplicators.Y = FMath::Max(1-DotY, OppositInputsMult);
+
+	Multiplicators *= HitStrenght;
+	Multiplicators.X = FMath::Min(Multiplicators.X, 1.0f);
+	Multiplicators.Y = FMath::Min(Multiplicators.Y, 1.0f);
+	Multiplicators.Z = FMath::Min(Multiplicators.Z, 1.0f);
+	
 	
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("MultX: %f, MultY: %f"), Mults.X, Mults.Y));
 
