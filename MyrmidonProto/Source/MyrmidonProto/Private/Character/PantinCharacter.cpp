@@ -56,6 +56,7 @@ void APantinCharacter::BeginPlay()
 	WindMaxHit = PantinDataAsset->WindMaxHit;
 	WindDirection = PantinDataAsset->WindDirection;
 	OppositInputsMult = PantinDataAsset->OppositInputsMult;
+	WindMaxSpeedMult = PantinDataAsset->WindMaxSpeedMult;
 
 	ClimbSpeed = PantinDataAsset->ClimbSpeed;
 	ClimbMinArea = PantinDataAsset->ClimbMinArea;
@@ -110,6 +111,7 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 		RunningAgainstWind = false;
 		RunningWithWind = false;
 		LastRunningAgainstWind = RunningAgainstWind;
+		UpdateWindSpeed();
 		return Input;
 	}
 
@@ -123,6 +125,7 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 		RunningAgainstWind = false;
 		RunningWithWind = true;
 		LastRunningAgainstWind = RunningAgainstWind;
+		UpdateWindSpeed();
 		return Input;
 	}
 
@@ -145,6 +148,7 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 	RunningAgainstWind = true;
 	RunningWithWind = false;
 	LastRunningAgainstWind = RunningAgainstWind;
+	UpdateWindSpeed();
 	
 	return NewInputs;
 }
@@ -154,6 +158,23 @@ void APantinCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(APantinCharacter, GrabbedOnBar);
+}
+
+void APantinCharacter::UpdateWindSpeed()
+{
+	//if (!WindIsActive || WindHitPoints == WindMaxHit) return;
+
+	if (!RunningWithWind && !LastRunningWithWind) return;
+	if (RunningWithWind && LastRunningWithWind) return;
+	
+	CalculateSpeed();
+	LastRunningWithWind = RunningWithWind;
+}
+
+void APantinCharacter::CalculateSpeed()
+{
+	const auto Mult = RunningWithWind ? WindMaxSpeedMult : 1.0f;
+	GetCharacterMovement()->MaxWalkSpeed = Mult * (IsSprinting ? MaxSprintSpeed : MaxWalkSpeed);
 }
 
 // Called every frame
@@ -175,6 +196,6 @@ void APantinCharacter::ActivateSprint_Implementation(const bool bActivate)
 	if (bActivate == IsSprinting) return;
 
 	IsSprinting = bActivate;
-	GetCharacterMovement()->MaxWalkSpeed = IsSprinting ? MaxSprintSpeed : MaxWalkSpeed;
+	CalculateSpeed();
 }
 

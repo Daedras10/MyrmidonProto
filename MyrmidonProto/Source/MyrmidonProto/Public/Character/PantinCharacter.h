@@ -40,6 +40,10 @@ protected:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	void UpdateWindSpeed();
+
+	void CalculateSpeed();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -107,6 +111,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	bool WindIsActive = false;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
+	float WindMaxSpeedMult = 1.3;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
 	bool IsCovered = false;
 
@@ -158,6 +165,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
 	bool RunningWithWind = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	bool LastRunningWithWind = false;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation", Replicated)
 	bool GrabbedOnBar = false;
