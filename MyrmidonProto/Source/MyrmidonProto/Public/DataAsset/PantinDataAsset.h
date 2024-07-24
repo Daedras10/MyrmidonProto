@@ -104,6 +104,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	FVector WindDirection = FVector(1.0f, 0.0f, 0.0f);
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
+	float WindMaxSpeedMult = 1.3;
+
 
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Climb")
