@@ -5,6 +5,7 @@
 
 #include "DataAsset/PantinDataAsset.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Net/UnrealNetwork.h"
 
 // Sets default values
 APantinCharacter::APantinCharacter()
@@ -146,6 +147,13 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 	LastRunningAgainstWind = RunningAgainstWind;
 	
 	return NewInputs;
+}
+
+void APantinCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(APantinCharacter, GrabbedOnBar);
 }
 
 // Called every frame

@@ -36,7 +36,9 @@ protected:
 	virtual void ClearVelocityAndForwardMemory();
 
 	UFUNCTION(BlueprintCallable)
-	FVector ConvertInputToWind(const FVector Input); 
+	FVector ConvertInputToWind(const FVector Input);
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:	
 	// Called every frame
@@ -156,6 +158,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
 	bool RunningWithWind = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation", Replicated)
+	bool GrabbedOnBar = false;
 
 	
 
