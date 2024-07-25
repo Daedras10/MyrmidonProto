@@ -160,6 +160,11 @@ void APantinCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	DOREPLIFETIME(APantinCharacter, GrabbedOnBar);
 }
 
+void APantinCharacter::FellOutOfWorld(const UDamageType& dmgType)
+{
+	//Super::FellOutOfWorld(dmgType);
+}
+
 void APantinCharacter::UpdateWindSpeed()
 {
 	//if (!WindIsActive || WindHitPoints == WindMaxHit) return;

@@ -40,10 +40,11 @@ protected:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	virtual void FellOutOfWorld(const UDamageType& dmgType) override;
+
 	void UpdateWindSpeed();
 
 	void CalculateSpeed();
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
