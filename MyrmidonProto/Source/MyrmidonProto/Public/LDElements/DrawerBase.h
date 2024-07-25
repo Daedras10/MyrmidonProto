@@ -40,6 +40,12 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool StartClosed = true;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FVector DrawerScale = FVector(1.0f, 1.0f, 1.0f);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FVector HandleScale = FVector(0.05f, 0.05f, 0.3f);
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UDrawerBaseDataAsset* DataAsset;
