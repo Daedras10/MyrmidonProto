@@ -153,6 +153,10 @@ FVector APantinCharacter::ConvertInputToWind(const FVector Input)
 	return NewInputs;
 }
 
+void APantinCharacter::ChangeToFreeCam_Implementation()
+{
+}
+
 void APantinCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -163,6 +167,8 @@ void APantinCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 void APantinCharacter::FellOutOfWorld(const UDamageType& dmgType)
 {
 	//Super::FellOutOfWorld(dmgType);
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Fell out of world, cam should change to free"));
+	ChangeToFreeCam();
 }
 
 void APantinCharacter::UpdateWindSpeed()

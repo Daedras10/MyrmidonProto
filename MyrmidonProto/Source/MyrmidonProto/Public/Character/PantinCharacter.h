@@ -38,6 +38,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	FVector ConvertInputToWind(const FVector Input);
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void ChangeToFreeCam();
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	virtual void FellOutOfWorld(const UDamageType& dmgType) override;
