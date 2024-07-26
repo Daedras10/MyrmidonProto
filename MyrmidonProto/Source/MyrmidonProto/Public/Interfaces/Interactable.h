@@ -86,7 +86,7 @@ public:
 	FVector GetRectMargins();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	FSTRUC_InputInfos GetInputInfos();
+	FSTRUC_InputInfos GetInputInfos(bool& bDisplay);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPickable();
