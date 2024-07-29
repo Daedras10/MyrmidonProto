@@ -12,7 +12,7 @@ public class MyrmidonProto : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
-        DynamicallyLoadedModuleNames.AddRange(new string[] { "NetworkReplayStreaming", "InMemoryNetworkReplayStreaming"});
+        DynamicallyLoadedModuleNames.AddRange(new string[] { "NetworkReplayStreaming", "InMemoryNetworkReplayStreaming", "OnlineSubsystemSteam"});
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
