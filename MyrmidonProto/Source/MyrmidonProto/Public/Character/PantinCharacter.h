@@ -118,6 +118,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	float WindMaxSpeedMult = 1.3;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
+	float WindAirMult = 0.275f;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
 	bool IsCovered = false;
 
