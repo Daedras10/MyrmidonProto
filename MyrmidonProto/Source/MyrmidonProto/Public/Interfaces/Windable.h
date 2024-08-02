@@ -23,7 +23,7 @@ class MYRMIDONPROTO_API IWindable
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
-	void SetWindDirection(FVector WindDirection);
+	void SetWindDirection(FVector WindDirection, float WindStrength);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetActiveWind(bool bIsActive);
