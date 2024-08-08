@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InteractableBase.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/Interactable.h"
 #include "Interfaces/VisualSwitcher.h"
 #include "SwitchBase.generated.h"
 
 UCLASS()
-class MYRMIDONPROTO_API ASwitchBase : public AActor, public IVisualSwitcher, public IInteractable
+class MYRMIDONPROTO_API ASwitchBase : public AInteractableBase, public IVisualSwitcher
 {
 	GENERATED_BODY()
 	
@@ -24,9 +25,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	bool IsPickupable = false;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsPantinView = false;

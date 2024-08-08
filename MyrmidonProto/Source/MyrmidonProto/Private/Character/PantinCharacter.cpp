@@ -203,6 +203,11 @@ void APantinCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+bool APantinCharacter::IsInteractable_Implementation()
+{
+	return bIsInteractable;
+}
+
 void APantinCharacter::ActivateSprint_Implementation(const bool bActivate)
 {
 	if (bActivate == IsSprinting) return;

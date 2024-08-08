@@ -26,4 +26,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsPickupable = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool bIsInteractable = true;
+
+	virtual bool IsInteractable_Implementation() override;
 };
