@@ -25,3 +25,8 @@ void AInteractableBase::Tick(float DeltaTime)
 
 }
 
+bool AInteractableBase::IsInteractable_Implementation()
+{
+	return bIsInteractable;
+}
+

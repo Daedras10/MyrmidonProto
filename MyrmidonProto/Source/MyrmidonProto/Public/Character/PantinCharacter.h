@@ -57,6 +57,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
 	void ActivateSprint(const bool bActivate);
+	
+	virtual bool IsInteractable_Implementation() override;
+
+	
 
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
@@ -179,6 +183,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation", Replicated)
 	bool GrabbedOnBar = false;
 
+
 	
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool bIsInteractable = true;
 };
