@@ -109,6 +109,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Wind")
 	float WindHitPoints = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Wind")
+	float WindLength = 500;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Wind")
 	float OppositInputsMult = 0.6f;
