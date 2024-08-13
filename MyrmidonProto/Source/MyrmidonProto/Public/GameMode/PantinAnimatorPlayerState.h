@@ -31,6 +31,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<int> PantinCheckPointIndexes;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool DEBUG = false;
+	
 	
 
 	void BeginPlay() override;

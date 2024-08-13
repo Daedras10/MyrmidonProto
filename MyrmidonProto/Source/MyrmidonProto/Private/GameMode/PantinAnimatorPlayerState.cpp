@@ -29,6 +29,7 @@ void APantinAnimatorPlayerState::SkipToNextCheckpoint()
 		if (Checkpoint <= PantinCheckPointIndex) continue;
 
 		PantinCheckPointIndex = Checkpoint;
+		if (DEBUG) GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("+New checkpoint index: %d"), PantinCheckPointIndex));
 		return;
 	}
 }
@@ -44,4 +45,5 @@ void APantinAnimatorPlayerState::SkipToPreviousCheckpoint()
 	}
 	if (NewCheckpoint == -1) return;
 	PantinCheckPointIndex = NewCheckpoint;
+	if (DEBUG) GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("-New checkpoint index: %d"), PantinCheckPointIndex));
 }

@@ -58,6 +58,7 @@ void APantinCharacter::BeginPlay()
 	OppositInputsMult = PantinDataAsset->OppositInputsMult;
 	WindMaxSpeedMult = PantinDataAsset->WindMaxSpeedMult;
 	WindAirMult = PantinDataAsset->WindAirMult;
+	WindLength = PantinDataAsset->WindLength;
 
 	ClimbSpeed = PantinDataAsset->ClimbSpeed;
 	ClimbMinArea = PantinDataAsset->ClimbMinArea;
