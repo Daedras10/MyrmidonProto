@@ -28,11 +28,20 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool UseDataAsset = true;
 	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<int> PantinCheckPointIndexes;
+	
+	
 
 	void BeginPlay() override;
 
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	UFUNCTION(BlueprintCallable)
+	void SkipToNextCheckpoint();
 	
+	UFUNCTION(BlueprintCallable)
+	void SkipToPreviousCheckpoint();
 	
 	
 	
