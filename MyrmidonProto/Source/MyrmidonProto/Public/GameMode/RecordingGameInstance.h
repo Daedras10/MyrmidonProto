@@ -4,9 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "AdvancedFriendsGameInstance.h"
+#include "Enums.h"
 #include "Engine/GameInstance.h"
 #include "RecordingGameInstance.generated.h"
 
+enum class ELanguages : uint8;
 class UWorldDataAsset;
 /**
  * 
@@ -24,6 +26,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool IsPantin = false;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	ELanguages Languages = ELanguages::English;
 
 	UFUNCTION(BlueprintCallable)
 	void StartRecording(FString sequenceName);
