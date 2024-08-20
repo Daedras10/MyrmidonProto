@@ -32,4 +32,18 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FName PantinTag = "Pantin";
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool PantinEndOfGame;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool AnimatorEndOfGame;
+
+
+protected:
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool CanEndGame();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
+	bool IsPlayerPresent(bool IsPantin);
 };
