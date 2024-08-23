@@ -35,6 +35,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float ArmReach = 5000.0f;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxGrabbedRange = 3000.0f;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
 	bool CanMove = true;
 
