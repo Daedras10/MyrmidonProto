@@ -73,6 +73,53 @@ void APlayerControllerPantinAnimator::InputsToCirclePositive(const FVector2D Inp
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
 }
 
+/*
+*auto Progression = AngleDegNormalized - CircleStartAngle;
+	Progression = FMath::Fmod(Progression + 360, 360);
+	
+	auto KindAngle = Progression + AngleKindness;
+	//if (KindAngle > 360) KindAngle = 360;
+
+	auto Percent = KindAngle / 360.0f;
+
+	//if (Percent > 1) Percent -= 1;
+	auto ProgressSinceLast = Percent - CurrentProgressionPositive;
+	//if (ProgressSinceLast < 0) return;
+
+	//if (ProgressSinceLast >= 0)
+		CurrentProgressionPositive = Percent;
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%f >>> (%f)   : %f / %f ; %f"), Percent, CurrentProgressionPositive, CircleStartAngle, KindAngle, AngleDegNormalized));
+	return;
+
+	//if (FMath::Abs(Percent - CurrentProgressionPositive) > ProgressionAllowed || (CurrentProgressionPositive + Percent)-1 > CurrentProgressionPositive)
+	if (ProgressSinceLast > ProgressionAllowed)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%f"), ProgressSinceLast));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%f - %f; %f > %f"), Percent, CurrentProgressionPositive, FMath::Abs(Percent - CurrentProgressionPositive), ProgressionAllowed));
+		return;
+	}
+	if (ProgressSinceLast < 0)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("%f"), ProgressSinceLast));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%f - %f; %f > %f"), Percent, CurrentProgressionPositive, FMath::Abs(Percent - CurrentProgressionPositive), ProgressionAllowed));
+		return;
+	}
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f"), Percent*100.0f));
+
+	CurrentProgressionPositive = Percent;
+	CirclePositiveProgression(Percent);
+
+	if (Percent == 1.0f)
+	{
+		OnCirclePositive();
+		//ClearDirections();
+	}
+
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
+ */
+
 void APlayerControllerPantinAnimator::InputsToCircleNegative(FVector2D Inputs)
 {
 	const auto Angle = FMath::Atan2(Inputs.Y, Inputs.X);
