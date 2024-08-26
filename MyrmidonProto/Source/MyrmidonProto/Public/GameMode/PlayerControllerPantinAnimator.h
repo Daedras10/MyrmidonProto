@@ -99,4 +99,7 @@ private:
 	void CancelCircle();
 	
 	FTimerHandle CircleInputTimeoutHandle;
+
+	bool CircleDebug = false;
+	float MinPercentChange = 0.01f;
 };
