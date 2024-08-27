@@ -40,7 +40,7 @@ void APlayerControllerPantinAnimator::InputsToCirclePositive(const FVector2D Inp
 	const auto Angle = FMath::Atan2(Inputs.Y, Inputs.X);
 	const auto AngleDeg = FMath::RadiansToDegrees(Angle);
 	const auto AngleDegNormalized = FMath::Fmod(AngleDeg + 360, 360);
-
+	
 	if (CircleStartAngle < 0)
 	{
 		CircleStartAngle = AngleDegNormalized;
@@ -51,26 +51,42 @@ void APlayerControllerPantinAnimator::InputsToCirclePositive(const FVector2D Inp
 		return;
 	}
 	
-	auto Progression = AngleDegNormalized + CircleStartAngle;
+	auto Progression = AngleDegNormalized - CircleStartAngle;
 	Progression = FMath::Fmod(Progression + 360, 360);
 	
-	auto KindAngle = Progression + AngleKindness;
-	if (KindAngle > 360) KindAngle = 360;
+	auto KindAngle = Progression - AngleKindness;
+	auto Percent = KindAngle / 360.0f;
+	
+	if (Inputs.Size() < 0.01) return;
 
-	const auto Percent = KindAngle / 360.0f;
+	auto limit1 = CurrentProgressionPositive;
+	auto limit2 = CurrentProgressionPositive+ProgressionAllowed;
+	auto inside = Percent > limit1 && Percent < limit2;
+	auto circle = false;
 
-	if (FMath::Abs(Percent - CurrentProgressionPositive) > ProgressionAllowed ) return;
+	if (!inside)
+	{
+		if (limit2 < 1) return;
 
+		limit2 -= 1;
+		inside = Percent > 0 && Percent < limit2;
+		if (!inside) return;
+
+		circle = true;
+	}
+	
+	if (abs(Percent - CurrentProgressionPositive) <= MinPercentChange) return;
+
+	if (CircleDebug) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("%f >>> %f"), Percent, CurrentProgressionPositive));
+	
 	CurrentProgressionPositive = Percent;
+	CurrentProgressionNegative = 1 - CurrentProgressionPositive;
 	CirclePositiveProgression(Percent);
 
-	if (Percent == 1.0f)
-	{
-		OnCirclePositive();
-		//ClearDirections();
-	}
-
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
+	if (!circle) return;
+	
+	OnCirclePositive();
+	//ClearDirections();
 }
 
 /*
@@ -135,28 +151,43 @@ void APlayerControllerPantinAnimator::InputsToCircleNegative(FVector2D Inputs)
 		CircleNegativeProgression(0);
 		return;
 	}
-	
+
 	auto Progression = AngleDegNormalized - CircleStartAngle;
 	Progression = FMath::Fmod(Progression + 360, 360);
 	
 	auto KindAngle = Progression - AngleKindness;
-	if (KindAngle < 0) KindAngle = 0;
-
-	const auto Percent = 1 + (KindAngle / -360.0f);
+	auto Percent = 1 - (KindAngle / 360.0f);
 	
+	if (Inputs.Size() < 0.01) return;
 
-	if (FMath::Abs(Percent - CurrentProgressionNegative) > ProgressionAllowed ) return;
+	auto limit1 = CurrentProgressionNegative;
+	auto limit2 = CurrentProgressionNegative+ProgressionAllowed;
+	auto inside = Percent > limit1 && Percent < limit2;
+	auto circle = false;
 
-	CurrentProgressionNegative = Percent;
-	CircleNegativeProgression(Percent);
-
-	if (Percent == 1.0f)
+	if (!inside)
 	{
-		OnCircleNegative();
-		//ClearDirections();
+		if (limit2 < 1) return;
+
+		limit2 -= 1;
+		inside = Percent > 0 && Percent < limit2;
+		if (!inside) return;
+
+		circle = true;
 	}
 
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Percent: %f ; %f"), Percent*100.0f, CircleStartAngle));
+	if (abs(Percent - CurrentProgressionNegative) <= MinPercentChange) return;
+
+	if (CircleDebug) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("%f >>> %f"), Percent, CurrentProgressionNegative));
+	
+	CurrentProgressionNegative = Percent;
+	CurrentProgressionPositive = 1 - CurrentProgressionNegative;
+	CircleNegativeProgression(Percent);
+
+	if (!circle) return;
+	
+	OnCircleNegative();
+	//ClearDirections();
 }
 
 void APlayerControllerPantinAnimator::InputDirection(const EDirection Direction)

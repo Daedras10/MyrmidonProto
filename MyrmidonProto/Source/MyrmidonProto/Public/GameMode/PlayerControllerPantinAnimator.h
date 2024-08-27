@@ -86,7 +86,7 @@ public:
 	float CircleStartAngle = -1.0f;
 
 	UPROPERTY(BlueprintReadWrite)
-	float ProgressionAllowed = 0.05f;
+	float ProgressionAllowed = 0.15f;
 
 	UPROPERTY(BlueprintReadWrite)
 	float CurrentProgressionPositive = 0.0f;
@@ -99,4 +99,7 @@ private:
 	void CancelCircle();
 	
 	FTimerHandle CircleInputTimeoutHandle;
+
+	bool CircleDebug = false;
+	float MinPercentChange = 0.01f;
 };

@@ -6,6 +6,7 @@
 #include "LDElements/Base/SwitchBase.h"
 #include "Bridge.generated.h"
 
+
 /**
  * 
  */
@@ -56,6 +57,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool Closing = true;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
+	bool Interacting = false;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category="Bridge states")
 	bool LastFinishedStateWasClose = true;
