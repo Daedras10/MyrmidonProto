@@ -68,6 +68,12 @@ public:
 	void EndHover();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ShowAim();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void HideAim();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void Moved(FVector position);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
