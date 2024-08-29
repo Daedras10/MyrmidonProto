@@ -3,6 +3,7 @@
 
 #include "Character/Animator.h"
 
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
 // Sets default values
@@ -10,14 +11,15 @@ AAnimator::AAnimator()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
 void AAnimator::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	GetCharacterMovement()->GravityScale = GravityScale;
+	GetCharacterMovement()->MaxStepHeight = MaxStepHeight;
 }
 
 // Called every frame

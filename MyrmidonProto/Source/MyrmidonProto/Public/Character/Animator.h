@@ -38,6 +38,12 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float MaxGrabbedRange = 3000.0f;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxStepHeight = 600.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float GravityScale = 15.0f;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
 	bool CanMove = true;
 
