@@ -5,12 +5,13 @@
 #include "CoreMinimal.h"
 #include "Base/InteractableBase.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/VisualSwitcher.h"
 #include "DrawerBase.generated.h"
 
 class UDrawerBaseDataAsset;
 
 UCLASS()
-class MYRMIDONPROTO_API ADrawerBase : public AInteractableBase
+class MYRMIDONPROTO_API ADrawerBase : public AInteractableBase, public IVisualSwitcher
 {
 	GENERATED_BODY()
 	
