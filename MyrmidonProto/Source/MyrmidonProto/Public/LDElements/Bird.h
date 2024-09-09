@@ -22,7 +22,7 @@ enum class EBirdAction : uint8
  * 
  */
 UCLASS()
-class MYRMIDONPROTO_API ABird : public ASwitchBase, public IWindable
+class MYRMIDONPROTO_API ABird : public APawn, public IWindable, public IVisualSwitcher, public IInteractable
 {
 	GENERATED_BODY()
 	

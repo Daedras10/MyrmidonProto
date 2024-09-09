@@ -6,12 +6,36 @@
 #include "UObject/Interface.h"
 #include "LanguageDependent.generated.h"
 
+class ATextRenderActor;
 enum class ELanguages : uint8;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class ULanguageDependent : public UInterface
 {
 	GENERATED_BODY()
+};
+
+USTRUCT(BlueprintType)
+struct FLanguageText
+{
+	GENERATED_BODY()
+
+public:
+	FLanguageText(): TextActor(nullptr)
+	{
+		English = "";
+		French = "";
+	}
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Language")
+	FString English;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Language")
+	FString French;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Language")
+	ATextRenderActor* TextActor;
 };
 
 /**
