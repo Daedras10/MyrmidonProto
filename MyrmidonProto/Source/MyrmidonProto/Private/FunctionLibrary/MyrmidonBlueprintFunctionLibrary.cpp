@@ -4,7 +4,7 @@
 #include "FunctionLibrary/MyrmidonBlueprintFunctionLibrary.h"
 
 
-float UMyrmidonBlueprintFunctionLibrary::GetMinimalDistanceFromPointToRay(FVector Origin, FVector Forward,
+FDistanceData UMyrmidonBlueprintFunctionLibrary::GetMinimalDistanceFromPointToRay(FVector Origin, FVector Forward,
 	FVector Target)
 {
 	FVector u = Forward.GetSafeNormal();
@@ -13,5 +13,12 @@ float UMyrmidonBlueprintFunctionLibrary::GetMinimalDistanceFromPointToRay(FVecto
 	float angle = FMath::Acos(FVector::DotProduct(u, v));
 	float distance = FVector::Dist(Origin, Target) * FMath::Sin(angle);
 
-	return distance;
+	FDistanceData data = FDistanceData(distance, angle);
+	return data;
+}
+
+bool UMyrmidonBlueprintFunctionLibrary::IsDistanceDataValid(FDistanceData Data, float MaxDistance, float MaxAngle)
+{
+	if (abs(Data.Distance) > MaxDistance || abs(Data.Angle) > MaxAngle) return false;
+	return true;
 }
