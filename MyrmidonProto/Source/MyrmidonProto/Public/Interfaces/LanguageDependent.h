@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "LanguageDependent.generated.h"
 
+class AStaticMeshActor;
 class ATextRenderActor;
 enum class ELanguages : uint8;
 // This class does not need to be modified.
@@ -37,6 +38,29 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Language")
 	ATextRenderActor* TextActor;
 };
+
+
+USTRUCT(BlueprintType)
+struct FInputVisuals
+{
+	GENERATED_BODY()
+
+public:
+	FInputVisuals(): InputKeayboardMaterial(nullptr), InputGamepadMaterial(nullptr), Mesh(nullptr)
+	{
+	}
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
+	UMaterial* InputKeayboardMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
+	UMaterial* InputGamepadMaterial;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
+	AStaticMeshActor* Mesh;
+};
+
 
 /**
  * 
