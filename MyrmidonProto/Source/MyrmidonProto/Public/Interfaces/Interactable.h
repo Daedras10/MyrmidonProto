@@ -23,10 +23,16 @@ public:
 	 FString inputOneText;
 	UPROPERTY(BlueprintReadWrite)
 	 FString inputTwoText;
+	
 	UPROPERTY(BlueprintReadWrite)
 	UTexture2D* inputIconOne;
 	UPROPERTY(BlueprintReadWrite)
 	UTexture2D* inputIconTwo;
+	
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconOneKeyboard;
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconTwoKeyboard;
 };
 
 /**
