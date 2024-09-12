@@ -95,6 +95,9 @@ public:
 	FVector GetInterractPoint();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	FVector GetInterractOffset();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	FVector GetRectMargins();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
