@@ -46,16 +46,16 @@ struct FInputVisuals
 	GENERATED_BODY()
 
 public:
-	FInputVisuals(): InputKeayboardMaterial(nullptr), InputGamepadMaterial(nullptr), Mesh(nullptr)
+	FInputVisuals(): InputKeyboardMaterial(nullptr), InputGamepadMaterial(nullptr), Mesh(nullptr)
 	{
 	}
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
-	UMaterial* InputKeayboardMaterial;
+	UMaterialInstance* InputKeyboardMaterial;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
-	UMaterial* InputGamepadMaterial;
+	UMaterialInstance* InputGamepadMaterial;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inputs")
 	AStaticMeshActor* Mesh;
