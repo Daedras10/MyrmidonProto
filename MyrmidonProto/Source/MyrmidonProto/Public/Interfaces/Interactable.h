@@ -111,5 +111,11 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPicked();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool PickableShouldLerp();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void SetPickableShouldLerp(bool bShouldLerp);
 };
 
