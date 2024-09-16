@@ -26,6 +26,33 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+	void ActivateSprint(const bool bActivate);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxWalkSpeed = 2500.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxSprintSpeed = 3500.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CameraNodeRyhtmMultWalk = 10.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CameraNodeRyhtmMultSprint = 12.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CameraNodeForceMultWalk = 10.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CameraNodeForceMultSprint = 20.0f;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CameraNodeMultiplier2 = 10.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool IsSprinting = false;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	AActor* ObjectInHand;
 

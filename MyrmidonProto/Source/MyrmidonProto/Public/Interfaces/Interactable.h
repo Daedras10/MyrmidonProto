@@ -23,10 +23,16 @@ public:
 	 FString inputOneText;
 	UPROPERTY(BlueprintReadWrite)
 	 FString inputTwoText;
+	
 	UPROPERTY(BlueprintReadWrite)
 	UTexture2D* inputIconOne;
 	UPROPERTY(BlueprintReadWrite)
 	UTexture2D* inputIconTwo;
+	
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconOneKeyboard;
+	UPROPERTY(BlueprintReadWrite)
+	UTexture2D* inputIconTwoKeyboard;
 };
 
 /**
@@ -89,6 +95,9 @@ public:
 	FVector GetInterractPoint();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	FVector GetInterractOffset();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	FVector GetRectMargins();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
@@ -102,5 +111,11 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	bool IsPicked();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool PickableShouldLerp();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void SetPickableShouldLerp(bool bShouldLerp);
 };
 

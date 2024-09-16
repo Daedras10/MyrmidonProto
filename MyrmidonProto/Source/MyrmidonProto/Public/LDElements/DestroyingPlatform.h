@@ -41,4 +41,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool UseDataAsset = true;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool ShouldLerp = false;
 };
