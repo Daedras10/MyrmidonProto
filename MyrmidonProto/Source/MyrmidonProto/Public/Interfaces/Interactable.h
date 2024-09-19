@@ -80,6 +80,9 @@ public:
 	void HideAim();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void LockAim(bool val);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void Moved(FVector position);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
