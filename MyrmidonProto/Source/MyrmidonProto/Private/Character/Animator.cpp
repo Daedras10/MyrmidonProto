@@ -20,6 +20,7 @@ void AAnimator::BeginPlay()
 
 	GetCharacterMovement()->GravityScale = GravityScale;
 	GetCharacterMovement()->MaxStepHeight = MaxStepHeight;
+	GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
 }
 
 // Called every frame
@@ -33,6 +34,14 @@ void AAnimator::Tick(float DeltaTime)
 void AAnimator::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void AAnimator::ActivateSprint_Implementation(const bool bActivate)
+{
+	if (bActivate == IsSprinting) return;
+
+	IsSprinting = bActivate;
+	GetCharacterMovement()->MaxWalkSpeed = IsSprinting ? MaxSprintSpeed : MaxWalkSpeed;
 }
 
 void AAnimator::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
