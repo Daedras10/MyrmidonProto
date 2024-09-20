@@ -8,6 +8,35 @@
 #include "Engine/GameInstance.h"
 #include "RecordingGameInstance.generated.h"
 
+
+USTRUCT(BlueprintType)
+struct FGameSaveData
+{
+	GENERATED_BODY()
+
+public:
+	FGameSaveData() : LanguageId(0), Master(1.0f), Music(1.0f), Sfx(1.0f), Sensitivity(1.0f)
+	{
+	}
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	int LanguageId = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	float Master = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	float Music = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	float Sfx = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	float Sensitivity = 1.0f;
+	
+};
+
+
 enum class ELanguages : uint8;
 class UWorldDataAsset;
 /**
@@ -42,13 +71,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void JumpToPoint(float time);
 
-
-
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UWorldDataAsset* WorldDataAsset;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool UseDataAsset = true;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FGameSaveData GameSaveData;
 
 	void Init() override;
 };
