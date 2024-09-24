@@ -21,6 +21,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	int LanguageId = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	int ScreenId = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveSound")
 	float Master = 1.0f;
