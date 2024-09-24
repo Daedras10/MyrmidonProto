@@ -19,21 +19,59 @@ public:
 	{
 	}
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	int LanguageId = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	int ScreenId = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveSound")
 	float Master = 1.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveSound")
 	float Music = 1.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveSound")
 	float Sfx = 1.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveID")
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	float Sensitivity = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	TArray<bool> UnlockedPages;
 	
+	
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int ViewDistance = 3;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int AntiAliasing = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int PostProcess = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Shadows = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int GlobalIllumination = 1;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Reflections = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Textures = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Effects = 2;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Foliage = 3;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
+	int Shading = 3;
 };
 
 
