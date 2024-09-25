@@ -18,12 +18,17 @@ public:
 	FGameSaveData() : LanguageId(0), Master(1.0f), Music(1.0f), Sfx(1.0f), Sensitivity(1.0f)
 	{
 	}
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	float SaveVersion = 1.0;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	int LanguageId = 0;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	int ScreenId = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	int Resolution = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveSound")
 	float Master = 1.0f;
