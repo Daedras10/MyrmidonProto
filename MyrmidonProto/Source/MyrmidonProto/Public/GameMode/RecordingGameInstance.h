@@ -45,6 +45,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
 	TArray<bool> UnlockedPages;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveInfo")
+	bool bDebugModeEnabled = false;
 	
 	
 	
@@ -123,6 +126,9 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FGameSaveData GameSaveData;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bDebugModeEnabled = false;
 
 	void Init() override;
 };
