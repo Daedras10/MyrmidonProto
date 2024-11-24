@@ -120,5 +120,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetPickableShouldLerp(bool bShouldLerp);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	bool TutoSound();
 };
 
