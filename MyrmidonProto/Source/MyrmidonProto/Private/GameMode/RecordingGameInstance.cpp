@@ -6,6 +6,22 @@
 #include "DataAsset/WorldDataAsset.h"
 #include "Engine/DemoNetDriver.h"
 
+void URecordingGameInstance::AskTimer(float Time)
+{
+	TimerHandle.Invalidate();
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &URecordingGameInstance::TimerEnded, Time, false);
+}
+
+void URecordingGameInstance::CancelTimer()
+{
+	TimerHandle.Invalidate();
+}
+
+void URecordingGameInstance::TimerEnded()
+{
+	OnTimerDelegate.Broadcast();
+}
+
 void URecordingGameInstance::StartRecording(FString sequenceName)
 {
 	if (isRecording) return;

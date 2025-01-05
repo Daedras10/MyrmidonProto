@@ -8,6 +8,7 @@
 #include "Engine/GameInstance.h"
 #include "RecordingGameInstance.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTimerDelegate);
 
 USTRUCT(BlueprintType)
 struct FGameSaveData
@@ -92,7 +93,20 @@ UCLASS()
 class MYRMIDONPROTO_API URecordingGameInstance : public UAdvancedFriendsGameInstance
 {
 	GENERATED_BODY()
+
 public:
+	UFUNCTION(BlueprintCallable) void AskTimer(float Time);
+	UFUNCTION(BlueprintCallable) void CancelTimer();
+
+	UFUNCTION() void TimerEnded();
+
+public:
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
+	FOnTimerDelegate OnTimerDelegate;
+	
+public:
+	FTimerHandle TimerHandle;
+	
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	bool isRecording = false;
 
