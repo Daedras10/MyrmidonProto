@@ -18,6 +18,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float RecordTimer;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int DeathThisRun = 0;
+
 	//TODO Camera
 	//TODO Sequences
 

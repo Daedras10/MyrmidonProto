@@ -81,6 +81,12 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveGraphics")
 	int Shading = 3;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveMeta")
+	bool bEverPlayedPuppet = false;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SaveMeta")
+	bool bEverPlayedAnimator = false;
 };
 
 
